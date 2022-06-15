@@ -875,10 +875,10 @@ webserver:
   defaultUser:
     enabled: true
     role: Admin
-    username: neylsoncrepalde
-    email: neylson.crepalde@a3data.com.br
-    firstName: Neylson
-    lastName: Crepalde
+    username: mateusclira
+    email: mateusc.lira@gmail.com
+    firstName: Mateus
+    lastName: Lira
     password: admin
 
   # Launch additional containers into webserver.
@@ -1555,8 +1555,8 @@ dags:
     # ssh examples ssh://git@github.com/apache/airflow.git
     # git@github.com:apache/airflow.git
     # https example: https://github.com/apache/airflow.git
-    repo: https://github.com/neylsoncrepalde/edc_mod4_exercise_igti.git
-    branch: dev
+    repo: https://github.com/mateusclira/edc-mod4-exercise-igti.git
+    branch: main
     rev: HEAD
     depth: 1
     # the number of consecutive failures allowed before aborting

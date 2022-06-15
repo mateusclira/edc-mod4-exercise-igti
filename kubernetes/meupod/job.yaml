@@ -9,7 +9,7 @@ spec:
     spec:
       containers:
       - name: readshow
-        image: neylsoncrepalde/exemplo_job:v4_amd
+        image: mateusclira/exemplo_job:v1
         env:
           - name: MINHA_VAR
             valueFrom:
