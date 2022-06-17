@@ -233,7 +233,7 @@ env:
   - name: AIRFLOW__LOGGING__REMOTE_LOGGING
     value: 'True'
   - name: AIRFLOW__LOGGING__REMOTE_BASE_LOG_FOLDER
-     value: 's3://datalake-mateus-608636080729/airflow-logs/'
+    value: 's3://datalake-mateus-608636080729/airflow-logs/'
   - name: AIRFLOW__LOGGING__REMOTE_LOG_CONN_ID
     value: 'my_aws'
 # - name: ""
