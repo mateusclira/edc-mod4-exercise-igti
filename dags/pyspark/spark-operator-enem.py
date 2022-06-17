@@ -29,7 +29,7 @@ if __name__ == "__main__":
         .read
         .format("csv")
         .options(header='true', inferSchema='true', delimiter=';')
-        .load("s3a://dl-landing-zone-539445819060/enem/")
+        .load("s3://dl-landing-zone-608636080729/enem/")
     )
     
     df.printSchema()
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     .write
     .mode("overwrite")
     .format("parquet")
-    .save("s3a://dl-processing-zone-539445819060/enem/")
+    .save("s3://dl-processing-zone-608636080729/enem/")
     )
 
     print("*****************")

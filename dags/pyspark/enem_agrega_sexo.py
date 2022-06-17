@@ -29,7 +29,7 @@ if __name__ == "__main__":
         spark
         .read
         .format("parquet")
-        .load("s3a://dl-processing-zone-539445819060/enem/")
+        .load("s3://dl-processing-zone-608636080729/enem/")
     )
     
     print("****************")
@@ -57,7 +57,7 @@ if __name__ == "__main__":
         .write
         .mode("overwrite")
         .format("parquet")
-        .save("s3a://dl-processing-zone-539445819060/intermediarias/uf_sexo")
+        .save("s3://dl-processing-zone-608636080729/intermediarias/uf_sexo/")
     )
 
     print("*********************")

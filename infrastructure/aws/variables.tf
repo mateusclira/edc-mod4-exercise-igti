@@ -3,11 +3,11 @@ variable "region_id" {
 }
 
 variable "prefix" {
-  default = "igti-ney-mod4"
+  default = "igti-mateus-mod4"
 }
 
 variable "account" {
-  default = 127012818163
+  default = 608636080729
 }
 
 # Prefix configuration and project common tags
@@ -17,12 +17,12 @@ locals {
     Project      = "Datalake"
     ManagedBy    = "Terraform"
     Department   = "systems",
-    Provider     = "A3DATA",
+    Provider     = "Mateus",
     Owner        = "Data Engineering"
     BusinessUnit = "Data"
     Billing      = "Infrastructure"
     Environment  = terraform.workspace
-    UserEmail    = "neylson.crepalde@a3data.com.br"
+    UserEmail    = "mateusc.lira@gmail.com"
   }
 }
 
