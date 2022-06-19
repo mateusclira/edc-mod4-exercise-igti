@@ -64,7 +64,7 @@ with DAG(
     anonimiza_inscricao_monitor = SparkKubernetesSensor(
         task_id='anonimiza_inscricao_monitor',
         namespace="airflow",
-        application_name="{{ task_instance.xcom_pull(task_ids='anonimiza_inscricao')['metadata']['name'] }}",
+        application_name="{{ task_instance.xcom_pull(task_id='anonimiza_inscricao')['metadata']['name'] }}",
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -84,7 +84,7 @@ with DAG(
     agrega_idade_monitor = SparkKubernetesSensor(
         task_id='agrega_idade_monitor',
         namespace="airflow",
-        application_name="{{ task_instance.xcom_pull(task_ids='agrega_idade')['metadata']['name'] }}",
+        application_name="{{ task_instance.xcom_pull(task_id='agrega_idade')['metadata']['name'] }}",
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -99,7 +99,7 @@ with DAG(
     agrega_sexo_monitor = SparkKubernetesSensor(
         task_id='agrega_sexo_monitor',
         namespace="airflow",
-        application_name="{{ task_instance.xcom_pull(task_ids='agrega_sexo')['metadata']['name'] }}",
+        application_name="{{ task_instance.xcom_pull(task_id='agrega_sexo')['metadata']['name'] }}",
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -114,7 +114,7 @@ with DAG(
     agrega_notas_monitor = SparkKubernetesSensor(
         task_id='agrega_notas_monitor',
         namespace="airflow",
-        application_name="{{ task_instance.xcom_pull(task_ids='agrega_notas')['metadata']['name'] }}",
+        application_name="{{ task_instance.xcom_pull(task_id='agrega_notas')['metadata']['name'] }}",
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -129,7 +129,7 @@ with DAG(
     join_final_monitor = SparkKubernetesSensor(
         task_id='join_final_monitor',
         namespace="airflow",
-        application_name="{{ task_instance.xcom_pull(task_ids='join_final')['metadata']['name'] }}",
+        application_name="{{ task_instance.xcom_pull(task_id='join_final')['metadata']['name'] }}",
         kubernetes_conn_id="kubernetes_default",
     )
 
