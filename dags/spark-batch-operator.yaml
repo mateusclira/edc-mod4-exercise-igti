@@ -31,7 +31,8 @@ spec:
       AWS_SECRET_ACCESS_KEY:
         name: aws-credentials
         key: aws_secret_access_key
-    cores: 1
+    cores: 3
+    instances: 3
     coreLimit: "1200m"
     memory: "4g"
     labels:
