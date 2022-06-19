@@ -22,7 +22,7 @@ spec:
   mainApplicationFile: s3://codes-pyspark-608636080729/enem_converte_parquet.py
   sparkVersion: "3.0.0"
   restartPolicy:
-    type: Never
+    type: Always
   driver:
     envSecretKeyRefs:
       AWS_ACCESS_KEY_ID:
