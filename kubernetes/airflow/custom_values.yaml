@@ -1567,16 +1567,16 @@ dags:
     # if your repo needs a user name password
     # you can load them to a k8s secret like the one below
     #   ---
-      apiVersion: v1
-      kind: Secret
-      metadata:
-        name: git-credentials
-      data:
-        GIT_SYNC_USERNAME: <base64_encoded_git_username>
-        GIT_SYNC_PASSWORD: <base64_encoded_git_password>
-        name: AKIAY3NMJSJM7JEZUSZ5
+    #   apiVersion: v1
+    #   kind: Secret
+    #   metadata:
+    #     name: git-credentials
+    #   data:
+    #     GIT_SYNC_USERNAME: <base64_encoded_git_username>
+    #     GIT_SYNC_PASSWORD: <base64_encoded_git_password>
+    #     name: AKIAY3NMJSJM7JEZUSZ5
     
-    credentialsSecret: git-credentials
+    # credentialsSecret: git-credentials
     #
     #
     # If you are using an ssh clone url, you can load
