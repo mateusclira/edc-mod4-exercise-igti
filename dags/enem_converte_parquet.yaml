@@ -1,7 +1,7 @@
 apiVersion: "sparkoperator.k8s.io/v1beta2"
 kind: SparkApplication
 metadata:
-  name: job-pyspark-converte-{{ macros.datetime.now().strftime("%Y-%m-%d-%H-%M-%S") }}
+  name: job-pyspark-{{ macros.datetime.now().strftime("%Y-%m-%d-%H-%M-%S") }}
   namespace: airflow
 spec:
   volumes:
@@ -19,10 +19,10 @@ spec:
   mode: cluster
   image: "docker.io/neylsoncrepalde/spark-operator:v3.0.0-aws"
   imagePullPolicy: Always
-  mainApplicationFile: s3://codes-pyspark-608636080729/enem_converte_parquet.py
+  mainApplicationFile: s3a://emr-code-539445819060/ney/pyspark/enem_converte_parquet.py
   sparkVersion: "3.0.0"
   restartPolicy:
-    type: Always
+    type: Never
   driver:
     envSecretKeyRefs:
       AWS_ACCESS_KEY_ID:
@@ -31,8 +31,7 @@ spec:
       AWS_SECRET_ACCESS_KEY:
         name: aws-credentials
         key: aws_secret_access_key
-    cores: 2
-    instances: 2
+    cores: 1
     coreLimit: "1200m"
     memory: "4g"
     labels:
@@ -49,9 +48,9 @@ spec:
       AWS_SECRET_ACCESS_KEY:
         name: aws-credentials
         key: aws_secret_access_key
-    cores: 2
-    instances: 2
-    memory: "8g"
+    cores: 3
+    instances: 3
+    memory: "4g"
     labels:
       version: 3.0.0
     volumeMounts:
