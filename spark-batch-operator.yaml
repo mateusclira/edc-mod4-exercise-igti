@@ -17,9 +17,9 @@ spec:
   type: Python
   pythonVersion: "3"
   mode: cluster
-  image: "docker.io/mateusclira/spark-operator-aws" 
+  image: "docker.io/neylsoncrepalde/spark-operator:v3.0.0-aws"
   imagePullPolicy: Always
-  mainApplicationFile: s3a://emr-code-539445819060/ney/pyspark/airflow-batch-pipe-task2.py
+  mainApplicationFile: s3a://emr-code-539445819060/ney/pyspark/spark-operator-enem.py
   sparkVersion: "3.0.0"
   restartPolicy:
     type: Never

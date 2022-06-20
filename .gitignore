@@ -39,3 +39,5 @@ terraform.rc
 *.DS_Store
 enade/
 enade2017*
+
+!/Build/release/authenticator/conf/nginx.conf
