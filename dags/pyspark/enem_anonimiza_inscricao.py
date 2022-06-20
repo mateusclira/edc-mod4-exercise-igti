@@ -29,7 +29,7 @@ if __name__ == "__main__":
         spark
         .read
         .format("parquet")
-        .load("s3://dl-processing-zone-608636080729/enem/")
+        .load("s3://arn:aws:s3:us-east-1:608636080729:accesspoint/ap-processing-zone/enem/")
     )
     
     print("*************")
@@ -49,7 +49,7 @@ if __name__ == "__main__":
         .write
         .mode("overwrite")
         .format("parquet")
-        .save("s3://dl-consumer-zone-608636080729/enem_anon/")
+        .save("s3://arn:aws:s3:us-east-1:608636080729:accesspoint/ap-consumer-zone/enem_anon/")
     )
 
     print("*********************")
