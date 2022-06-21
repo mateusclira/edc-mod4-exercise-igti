@@ -25,9 +25,9 @@ def trigger_crawler_final_func():
 with DAG(
     'enem_batch_spark_k8s',
     default_args={
-        'owner': 'Neylson',
+        'owner': 'Mateus',
         'depends_on_past': False,
-        'email': ['neylson.crepalde@a3data.com.br'],
+        'email': ['mateusc.lira@gmail.com'],
         'email_on_failure': False,
         'email_on_retry': False,
         'max_active_runs': 1,
@@ -138,13 +138,12 @@ with DAG(
         python_callable=trigger_crawler_final_func,
     )
 
-converte_parquet_monitor (converte_parquet)
-anonimiza_inscricao_monitor (anonimiza_inscricao)
-trigger_crawler_inscricao (anonimiza_inscricao_monitor)
-agrega_idade_monitor (agrega_idade (converte_parquet_monitor))
-agrega_sexo_monitor (agrega_sexo (converte_parquet_monitor))
-agrega_notas_monitor (agrega_notas (converte_parquet_monitor))
-join_final_monitor (join_final ([agrega_idade_monitor, agrega_sexo_monitor, agrega_notas_monitor]))
-trigger_crawler_final (join_final_monitor)
-agrega_sexo ([agrega_idade_monitor, agrega_notas_monitor])
-anonimiza_inscricao ([agrega_idade_monitor, agrega_notas_monitor])
+converte_parquet >> converte_parquet_monitor >> anonimiza_inscricao >> anonimiza_inscricao_monitor
+anonimiza_inscricao_monitor >> trigger_crawler_inscricao
+converte_parquet_monitor >> agrega_idade >> agrega_idade_monitor
+converte_parquet_monitor >> agrega_sexo >> agrega_sexo_monitor
+converte_parquet_monitor >> agrega_notas >> agrega_notas_monitor
+[agrega_idade_monitor, agrega_sexo_monitor, agrega_notas_monitor] >> join_final >> join_final_monitor
+join_final_monitor >> trigger_crawler_final
+[agrega_idade_monitor, agrega_notas_monitor] >> agrega_sexo
+[agrega_idade_monitor, agrega_notas_monitor] >> anonimiza_inscricao
