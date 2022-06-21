@@ -1,12 +1,12 @@
 from airflow import DAG
-from airflow import kwargs
 from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
 from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKubernetesSensor
 from airflow.operators.python_operator import PythonOperator
 from airflow.models.xcom import XCom
 from airflow.models import Variable
 import boto3
-task_instance = kwargs['task_instance']
+from airflow.models.taskinstance import TaskInstance
+
 aws_access_key_id = Variable.get('aws_access_key_id')
 aws_secret_access_key = Variable.get('aws_secret_access_key')
 glue = boto3.client('glue', region_name='us-east-1',
@@ -50,7 +50,7 @@ with DAG(
     converte_parquet_monitor = SparkKubernetesSensor(
         task_id='converte_parquet_monitor',
         namespace="airflow",
-        value = task_instance.xcom_pull(task_ids='converte_parquet'),
+        value = "task_instance.xcom_pull(task_ids='converte_parquet')['metadata']['name'] }}",
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -65,7 +65,7 @@ with DAG(
     anonimiza_inscricao_monitor = SparkKubernetesSensor(
         task_id='anonimiza_inscricao_monitor',
         namespace="airflow",
-        value = task_instance.xcom_pull(task_ids='anonimiza_inscricao'),
+        application_name="{{ task_instance.xcom_pull(task_ids='anonimiza_inscricao')['metadata']['name'] }}",
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -85,7 +85,7 @@ with DAG(
     agrega_idade_monitor = SparkKubernetesSensor(
         task_id='agrega_idade_monitor',
         namespace="airflow",
-        value = task_instance.xcom_pull(task_ids='agrega_idade'),
+        application_name="{{ task_instance.xcom_pull(task_ids='agrega_idade')['metadata']['name'] }}",
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -100,7 +100,7 @@ with DAG(
     agrega_sexo_monitor = SparkKubernetesSensor(
         task_id='agrega_sexo_monitor',
         namespace="airflow",
-        value = task_instance.xcom_pull(task_ids='agrega_sexo'),
+        application_name="{{ task_instance.xcom_pull(task_ids='agrega_sexo')['metadata']['name'] }}",
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -115,7 +115,7 @@ with DAG(
     agrega_notas_monitor = SparkKubernetesSensor(
         task_id='agrega_notas_monitor',
         namespace="airflow",
-        value = task_instance.xcom_pull(task_ids='agrega_notas'),
+        application_name="{{ task_instance.xcom_pull(task_ids='agrega_notas')['metadata']['name'] }}",
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -130,7 +130,7 @@ with DAG(
     join_final_monitor = SparkKubernetesSensor(
         task_id='join_final_monitor',
         namespace="airflow",
-        value = task_instance.xcom_pull(task_ids='join_final'),
+        application_name="{{ task_instance.xcom_pull(task_ids='join_final')['metadata']['name'] }}",
         kubernetes_conn_id="kubernetes_default",
     )
 
