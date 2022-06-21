@@ -1,12 +1,12 @@
 from airflow import DAG
-
+from airflow import kwargs
 from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
 from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKubernetesSensor
 from airflow.operators.python_operator import PythonOperator
 from airflow.models.xcom import XCom
 from airflow.models import Variable
 import boto3
-
+task_instance = kwargs['task_instance']
 aws_access_key_id = Variable.get('aws_access_key_id')
 aws_secret_access_key = Variable.get('aws_secret_access_key')
 glue = boto3.client('glue', region_name='us-east-1',
