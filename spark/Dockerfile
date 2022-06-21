@@ -1,4 +1,4 @@
-FROM gcr.io/google-containers/spark:latest
+FROM  mateusclira/spark-operator-aws:latest
 LABEL MAINTAINER Mateus Lira
 LABEL EMAIL mateusc.lira@gmail.com
 
