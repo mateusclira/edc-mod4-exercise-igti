@@ -15,6 +15,9 @@ sc = SparkContext(conf=conf).getOrCreate()
     
 
 if __name__ == "__main__":
+    print("*********************")
+    print("Tentando escrever!")
+    print("*********************")
 
     # init spark session
     spark = SparkSession\
