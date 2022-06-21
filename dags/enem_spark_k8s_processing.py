@@ -3,6 +3,7 @@ from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
 from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKubernetesSensor
 from airflow.operators.python_operator import PythonOperator
+from airflow.models.xcom import XCom
 from airflow.models import Variable
 import boto3
 
@@ -49,7 +50,7 @@ with DAG(
     converte_parquet_monitor = SparkKubernetesSensor(
         task_id='converte_parquet_monitor',
         namespace="airflow",
-        application_name="job-pyspark-",
+        value = task_instance.xcom_pull(task_ids='converte_parquet'),
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -64,7 +65,7 @@ with DAG(
     anonimiza_inscricao_monitor = SparkKubernetesSensor(
         task_id='anonimiza_inscricao_monitor',
         namespace="airflow",
-        application_name="spark-enem-anon-",
+        value = task_instance.xcom_pull(task_ids='anonimiza_inscricao'),
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -84,7 +85,7 @@ with DAG(
     agrega_idade_monitor = SparkKubernetesSensor(
         task_id='agrega_idade_monitor',
         namespace="airflow",
-        application_name="spark-enem-idade-",
+        value = task_instance.xcom_pull(task_ids='agrega_idade'),
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -99,7 +100,7 @@ with DAG(
     agrega_sexo_monitor = SparkKubernetesSensor(
         task_id='agrega_sexo_monitor',
         namespace="airflow",
-        application_name="spark-enem-sexo-",
+        value = task_instance.xcom_pull(task_ids='agrega_sexo'),
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -114,7 +115,7 @@ with DAG(
     agrega_notas_monitor = SparkKubernetesSensor(
         task_id='agrega_notas_monitor',
         namespace="airflow",
-        application_name="spark-enem-notas-",
+        value = task_instance.xcom_pull(task_ids='agrega_notas'),
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -129,7 +130,7 @@ with DAG(
     join_final_monitor = SparkKubernetesSensor(
         task_id='join_final_monitor',
         namespace="airflow",
-        application_name="spark-enem-final-",
+        value = task_instance.xcom_pull(task_ids='join_final'),
         kubernetes_conn_id="kubernetes_default",
     )
 
