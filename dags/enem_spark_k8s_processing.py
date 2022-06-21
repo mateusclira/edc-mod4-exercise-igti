@@ -65,7 +65,7 @@ with DAG(
     anonimiza_inscricao_monitor = SparkKubernetesSensor(
         task_id='anonimiza_inscricao_monitor',
         namespace="airflow",
-        application_name="{{ task_instance.xcom_pull(task_ids='anonimiza_inscricao')['metadata']['name'] }}",
+        application_name="spark-enem-anon",
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -85,7 +85,7 @@ with DAG(
     agrega_idade_monitor = SparkKubernetesSensor(
         task_id='agrega_idade_monitor',
         namespace="airflow",
-        application_name="{{ task_instance.xcom_pull(task_ids='agrega_idade')['metadata']['name'] }}",
+        application_name="spark-enem-idade",
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -100,7 +100,7 @@ with DAG(
     agrega_sexo_monitor = SparkKubernetesSensor(
         task_id='agrega_sexo_monitor',
         namespace="airflow",
-        application_name="{{ task_instance.xcom_pull(task_ids='agrega_sexo')['metadata']['name'] }}",
+        application_name="spark-enem-sexo",
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -115,7 +115,7 @@ with DAG(
     agrega_notas_monitor = SparkKubernetesSensor(
         task_id='agrega_notas_monitor',
         namespace="airflow",
-        application_name="{{ task_instance.xcom_pull(task_ids='agrega_notas')['metadata']['name'] }}",
+        application_name="spark-enem-notas",
         kubernetes_conn_id="kubernetes_default",
     )
 
@@ -130,7 +130,7 @@ with DAG(
     join_final_monitor = SparkKubernetesSensor(
         task_id='join_final_monitor',
         namespace="airflow",
-        application_name="{{ task_instance.xcom_pull(task_ids='join_final')['metadata']['name'] }}",
+        application_name="spark-enem-final",
         kubernetes_conn_id="kubernetes_default",
     )
 
