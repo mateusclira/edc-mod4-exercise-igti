@@ -1,7 +1,7 @@
 apiVersion: "sparkoperator.k8s.io/v1beta2"
 kind: SparkApplication
 metadata:
-  name: spark-enem-idade
+  name: spark-enem-idade-
   namespace: airflow
 spec:
   volumes:
