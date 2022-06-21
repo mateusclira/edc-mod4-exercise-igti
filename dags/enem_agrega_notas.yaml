@@ -1,7 +1,7 @@
 apiVersion: "sparkoperator.k8s.io/v1beta2"
 kind: SparkApplication
 metadata:
-  name: spark-enem-notas-{{ macros.datetime.now().strftime("%Y-%m-%d-%H-%M-%S") }}
+  name: spark-enem-notas
   namespace: airflow
 spec:
   volumes:
