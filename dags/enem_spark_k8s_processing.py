@@ -138,8 +138,7 @@ with DAG(
         python_callable=trigger_crawler_final_func,
     )
 
-converte_parquet >> converte_parquet_monitor >> anonimiza_inscricao >> anonimiza_inscricao_monitor
-anonimiza_inscricao_monitor >> trigger_crawler_inscricao
+converte_parquet >> converte_parquet_monitor >> anonimiza_inscricao >> anonimiza_inscricao_monitor >> trigger_crawler_inscricao
 converte_parquet_monitor >> agrega_idade >> agrega_idade_monitor
 converte_parquet_monitor >> agrega_sexo >> agrega_sexo_monitor
 converte_parquet_monitor >> agrega_notas >> agrega_notas_monitor
