@@ -43,6 +43,7 @@ with DAG(
         namespace="airflow",
         application_file="enem_converte_parquet.yaml",
         kubernetes_conn_id="kubernetes_default",
+        do_xcom_push=True,
     )
 
     converte_parquet_monitor = SparkKubernetesSensor(
@@ -57,6 +58,7 @@ with DAG(
         namespace="airflow",
         application_file="enem_anonimiza_inscricao.yaml",
         kubernetes_conn_id="kubernetes_default",
+        do_xcom_push=True,
     )
 
     anonimiza_inscricao_monitor = SparkKubernetesSensor(
@@ -76,6 +78,7 @@ with DAG(
         namespace="airflow",
         application_file="enem_agrega_idade.yaml",
         kubernetes_conn_id="kubernetes_default",
+        do_xcom_push=True,
     )
 
     agrega_idade_monitor = SparkKubernetesSensor(
@@ -90,6 +93,7 @@ with DAG(
         namespace="airflow",
         application_file="enem_agrega_sexo.yaml",
         kubernetes_conn_id="kubernetes_default",
+        do_xcom_push=True,
     )
 
     agrega_sexo_monitor = SparkKubernetesSensor(
@@ -104,6 +108,7 @@ with DAG(
         namespace="airflow",
         application_file="enem_agrega_notas.yaml",
         kubernetes_conn_id="kubernetes_default",
+        do_xcom_push=True,
     )
 
     agrega_notas_monitor = SparkKubernetesSensor(
@@ -118,6 +123,7 @@ with DAG(
         namespace="airflow",
         application_file="enem_join_final.yaml",
         kubernetes_conn_id="kubernetes_default",
+        do_xcom_push=True,
     )
 
     join_final_monitor = SparkKubernetesSensor(
