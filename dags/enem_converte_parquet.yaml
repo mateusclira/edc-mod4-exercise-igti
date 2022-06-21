@@ -9,7 +9,7 @@ spec:
       emptyDir: {}
   sparkConf:
     extraJavaOptions: -Dcom.amazonaws.services.s3.enableV4=true
-    spark.jars.packages: "org.apache.hadoop:hadoop-aws:2.7.3,org.apache.spark:spark-avro_2.12:3.0.1"
+    spark.jars.packages: "org.apache.hadoop:hadoop-aws:3.2.0"
     spark.driver.extraJavaOptions: "-Divy.cache.dir=/tmp -Divy.home=/tmp"
     spark.kubernetes.allocation.batch.size: "10"
   hadoopConf:
@@ -17,7 +17,7 @@ spec:
   type: Python
   pythonVersion: "3"
   mode: cluster
-  image: "docker.io/neylsoncrepalde/spark-operator:v3.0.0-aws"
+  image: "docker.io/ferlabcrsj/spark-operator:3.0.0_1"
   imagePullPolicy: Always
   mainApplicationFile: s3://arn:aws:s3:us-east-1:608636080729:accesspoint/pyspark/enem_converte_parquet.py
   sparkVersion: "3.0.0"
