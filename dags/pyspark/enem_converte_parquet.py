@@ -15,9 +15,6 @@ sc = SparkContext(conf=conf).getOrCreate()
     
 
 if __name__ == "__main__":
-    print("*********************")
-    print("Tentando escrever!")
-    print("*********************")
 
     # init spark session
     spark = SparkSession\
@@ -32,7 +29,7 @@ if __name__ == "__main__":
         .read
         .format("csv")
         .options(header='true', inferSchema='true', delimiter=';')
-        .load("s3://arn:aws:s3:us-east-1:608636080729:accesspoint/ap-landing-zone/enem/")
+        .load("s3a://dl-landing-zone-608636080729/enem/")
     )
     
     df.printSchema()
@@ -41,7 +38,7 @@ if __name__ == "__main__":
     .write
     .mode("overwrite")
     .format("parquet")
-    .save("s3://arn:aws:s3:us-east-1:608636080729:accesspoint/ap-processing-zone/enem")
+    .save("s3a://dl-processing-zone-608636080729/enem/")
     )
 
     print("*********************")
